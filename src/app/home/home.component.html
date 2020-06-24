@@ -1,0 +1,17 @@
+<h3>Entre com seu usuário e senha</h3>
+<form (ngSubmit)="login()">
+  <div>
+    <label for="inputUsername">Usuário</label>
+    <div>
+      <input id="inputUsername" name="inputUsername" type="text" [(ngModel)]="formLogin.username" >
+    </div>
+  </div>
+  <div>
+    <label for="inputPassword">Senha</label>
+    <div>
+      <input id="inputPassword" name="inputPassword" type="password" [(ngModel)]="formLogin.password" >
+    </div>
+  </div>
+
+  <button type="submit">Entrar</button>
+</form>

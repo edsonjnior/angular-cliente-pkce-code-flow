@@ -1,0 +1,19 @@
+<h1>Agendamentos</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Data</th>
+      <th>Convênio</th>
+      <th>Médico</th>
+      <th>Paciente</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let consulta of consultas">
+      <td>{{consulta.dataConsulta | date:'dd/MM/yyyy'}}</td>
+      <td>{{consulta.convenio }}</td>
+      <td>{{consulta.nomeMedico }}</td>
+      <td>{{consulta.nomePaciente }}</td>
+    </tr>
+  </tbody>
+</table>
