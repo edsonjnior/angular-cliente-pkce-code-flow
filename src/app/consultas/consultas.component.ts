@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AppService} from '../app.service';
+import { OAuthService } from 'angular-oauth2-oidc';
 
 @Component({
   selector: 'app-consultas',
@@ -8,14 +9,15 @@ import {AppService} from '../app.service';
 })
 export class ConsultasComponent implements OnInit {
 
+  accessToken: string = '';
   resourceUrl = 'http://localhost:8080/consultas';
   consultas = [];
 
-  constructor(private appService: AppService) {
+  constructor(private authService: OAuthService) {
   }
 
   ngOnInit(): void {
-    this.appService.getResource(this.resourceUrl)
-      .subscribe(data => this.consultas = data, error => console.log(error));
+    const claims = this.authService.getIdentityClaims();
+    console.log(JSON.stringify(claims, null, ''));
   }
 }

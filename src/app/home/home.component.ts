@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from '../user';
-import {AppService} from '../app.service';
+import {AuthService} from "../auth/auth.service";
 
 @Component({
   selector: 'app-home',
@@ -14,15 +14,15 @@ export class HomeComponent implements OnInit {
     password: 'admin'
   }
 
-  constructor(private appService: AppService) {
+  constructor(private authService: AuthService) {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
   }
 
   login(): void {
     if (this.formLogin.username && this.formLogin.password) {
-      this.appService.retriveToken(this.formLogin);
+      this.authService.login(this.formLogin);
     } else {
       alert('Nome e senha são obrigatórios')
     }
