@@ -10,8 +10,8 @@ import {AuthService} from "../auth/auth.service";
 export class HomeComponent implements OnInit {
 
   formLogin: User = {
-    username: 'admin@mail.com',
-    password: 'admin'
+    username: '',
+    password: ''
   }
 
   constructor(private authService: AuthService) {
@@ -21,10 +21,6 @@ export class HomeComponent implements OnInit {
   }
 
   login(): void {
-    if (this.formLogin.username && this.formLogin.password) {
-      this.authService.login(this.formLogin);
-    } else {
-      alert('Nome e senha são obrigatórios')
-    }
+    this.authService.handleLogin();
   }
 }

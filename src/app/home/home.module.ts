@@ -15,7 +15,12 @@ export function storageFactory(): OAuthStorage{
     CommonModule,
     FormsModule,
     RouterModule,
-    OAuthModule.forRoot()
+    OAuthModule.forRoot({
+      resourceServer: {
+        allowedUrls: ['http://localhost:8080'],
+        sendAccessToken: true
+      }
+    })
   ],
   providers: [
     {provide: OAuthStorage, useFactory: storageFactory}

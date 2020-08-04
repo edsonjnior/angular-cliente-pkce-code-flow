@@ -11,27 +11,17 @@ import { HttpClient, HttpRequest, HttpParams } from '@angular/common/http';
 })
 export class CallbackComponent implements OnInit {
 
-  callbackParams: any = {};
+  accessToken: string;
 
   constructor(
     private authService: AuthService,
     private activatedRoute: ActivatedRoute,
     private http: HttpClient) {
 
-      this.activatedRoute.queryParams.subscribe(params => this.callbackParams = params);
-
-    //   const body = new HttpParams();
-    //   body.set('client_id', 'cliente-agendamento');
-    //   body.set('grant_type', 'authorization_code');
-    //   body.set('redirect_uri', 'http:/localhost:4200');
-
-    // this.http.post('https://localhost:8443/oauth/token', ).subscribe(response => {
-    //   console.log(response);
-    // })
   }
 
   ngOnInit(): void {
-
+    this.accessToken = this.authService.getAccessToken();
   }
 
 }
